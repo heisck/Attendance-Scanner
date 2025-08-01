@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Attendance Scanner</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="icon" href="icon-192.png" type="image/png" />
+    <meta name="theme-color" content="#4f46e5"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="container">
+            <!-- Header Section -->
+            <header class="header">
+                <div class="header-content">
+                    <div class="brand">
+                        <div class="brand-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 7V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 9L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 13L12 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="brand-text">
+                            <h1>Attendance Scanner</h1>
+                            <p class="brand-subtitle">QR Code System</p>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <div id="connection-status" class="offline">
+                            <span class="status-indicator"></span>
+                            <span class="status-text">Offline</span>
+                        </div>
+                        <button id="view-log-btn" class="btn-icon" aria-label="View Scan History">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span id="log-count-badge" class="badge hidden">0</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Setup Section -->
+                <section id="setup-section" class="card setup-card">
+                    <div class="card-header">
+                        <h2>Start New Session</h2>
+                        <p>Enter your course code to begin scanning</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <label for="course-code" class="input-label">Course Code</label>
+                            <input type="text" id="course-code" placeholder="e.g., CS101, MATH202" class="input-field" />
+                        </div>
+                        <button id="start-scan-btn" class="btn btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 12L10.5 14.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Start Scanning Session
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Scanner Section -->
+                <section id="scanner-section" class="card scanner-card hidden">
+                    <div class="card-header">
+                        <div class="log-header-content">
+                            <div>
+                                <h2>Active Scanning</h2>
+                                <p>Point camera at QR codes</p>
+                            </div>
+                            <div id="scanner-live-counter" class="scan-counter">
+                                <span>0</span>
+                                <span class="counter-label">scans</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="scanner-wrapper">
+                            <div id="reader"></div>
+                        </div>
+                        <div id="scan-result" class="scan-feedback"></div>
+                        <button id="stop-scan-btn" class="btn btn-secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Stop Session
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Log Section -->
+                <section id="log-section" class="card log-card hidden">
+                    <div class="card-header">
+                        <div class="log-header-content">
+                            <div>
+                                <h2>Scan History</h2>
+                                <p>Session records</p>
+                            </div>
+                            <div class="scan-counter">
+                                <span id="log-count">0</span>
+                                <span class="counter-label">scans</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="log-container">
+                            <ul id="scan-log" class="scan-list"></ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="html5-qrcode.min.js"></script>
+    <script src="main-fixed.js"></script>
+</body>
+</html>
