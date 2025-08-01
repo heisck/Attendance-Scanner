@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- CONFIGURATION --- [Updated]
-  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwqFdyJivh4BBuf0ZJEPw0iezeh4gClikczF8dlZVlF0IFG3jzgYPBkztJjZ6i9vB8GXw/exec';
+  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzbkiAiV_w5r4DhuUW83-yuKjvCctZGDrKFx9QIwNBaBYBgIHpx7_iqYlaSFJZ2XtJE4Q/exec';
   const DB_NAME = 'AttendanceDB';
   const DB_VERSION = 1;
   const STORE_NAME = 'offlineQueue';
