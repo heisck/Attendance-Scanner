@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- CONFIGURATION --- [Updated]
-  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxECWn8TZQ_c9pmzt1fAS5siC198iQdlIWS6Empf8F6Po7OcFQT8nxOPdWSsgUJBlEs8A/exec';
+  const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzQS9yxNO0nFr54FasE4E_INjjCxMTvbZ32jriz4CbpGjVLYrEYOw_pZpB0kHTcCIgYpg/exec';
   const DB_NAME = 'AttendanceDB';
   const DB_VERSION = 1;
   const STORE_NAME = 'offlineQueue';
@@ -522,8 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // confirm the data was actually received successfully and prevent data loss.
         const response = await fetch(WEB_APP_URL, {
           method: 'POST',
-          // mode: 'no-cors', // This is removed to see the actual server response.
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain' }, // Change to text/plain to avoid preflight
           body: JSON.stringify(records) // Send the entire array of records
         });
 
