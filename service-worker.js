@@ -1,4 +1,4 @@
-const CACHE_NAME = 'attendance-scanner-v10'; // Updated paths to use root directory for icons
+const CACHE_NAME = 'attendance-scanner-v11'; // Updated paths to use root directory for icons
 const urlsToCache = [
   './', // Cache the current directory (scanner/)
   'index.html',
