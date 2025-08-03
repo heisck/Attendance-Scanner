@@ -1,4 +1,4 @@
-const CACHE_NAME = 'attendance-scanner-v8'; // Updated paths to use root directory for icons
+const CACHE_NAME = 'attendance-scanner-v10'; // Updated paths to use root directory for icons
 const urlsToCache = [
   './', // Cache the current directory (scanner/)
   'index.html',
@@ -34,10 +34,9 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Don't cache Google Apps Script requests - always fetch from network
+  // Don't intercept Google Apps Script requests at all - let them go directly
   if (event.request.url.includes('script.google.com')) {
-    event.respondWith(fetch(event.request));
-    return;
+    return; // Do not call event.respondWith() - let browser handle directly
   }
 
   event.respondWith(
